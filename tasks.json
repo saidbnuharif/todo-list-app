@@ -4,5 +4,11 @@
     "Drink enough water",
     "Do exercise",
     "Build future",
-    "New beggining"
+    "New beggining",
+    "New task",
+    "new task",
+    {
+        "task": "new one",
+        "status": false
+    }
 ]

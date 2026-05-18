@@ -12,9 +12,17 @@ def save_data():
         print("data saved")
 
 def add_task(task):
-    data.append(task)
+
+    data.append({
+
+        "task": task,
+        "status": False
+
+    })
+
     save_data()
-    print("task added")
+
+    print("Task added")
 
     
 
@@ -33,7 +41,18 @@ def view_tasks():
         print("list is empty")
     else:
         for index, task in enumerate(data,start=1):
-          print(f"{index}:{task}")          
+          print(f"{index}:{task}")    
+
+
+def update_task(status,task):
+   if  status == "yes": 
+    data[task][status] = True
+   else:
+       print("Please complete the task")  
+
+    
+    
+
 
 while True:
        print("""
@@ -41,7 +60,8 @@ while True:
        1:add
        2:remove
        3:find all
-       4:exit                        
+       4:update
+       5:exit                              
        """)  
 
        choice = input("Enter your choice: ")
@@ -62,8 +82,18 @@ while True:
                print("List not found")
            else:
                 view_tasks()  
-               
+
+
        elif choice == "4":
+          task = input("Enter your task")
+          if task in data:
+           status = "Does your task completed type yes / No"
+           update_task(status,task)
+          else:
+              print("No task found") 
+           
+               
+       elif choice == "5":
            print("exited from the program") 
            break
        
