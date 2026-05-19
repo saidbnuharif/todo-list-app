@@ -3,30 +3,30 @@ import json
 # with open("tasks.json","w")as file:
 #     json.dump([],file,)
 
-with open("tasks.json","r")as file:
+with open("tasks.json", "r") as file:
     data = json.load(file)
 
+
 def save_data():
-    with open("tasks.json","w")as file:
-        json.dump(data,file,indent=4)  
+
+    with open("tasks.json", "w") as file:
+
+        json.dump(data, file, indent=4)
+
         print("data saved")
+
 
 def add_task(task):
 
-    data.append({
-
-        "task": task.lower(),
-        "status": False
-    })
+    data.append({"task": task.lower(), "status": False})
 
     save_data()
 
     print("Task added")
 
-    
-
 
 def remove_task(task):
+
     print(task)
 
     for item in data:
@@ -42,20 +42,28 @@ def remove_task(task):
             return
 
     print("Task not found")
-    
+
 
 def view_tasks():
+
     if not data:
+
         print("list is empty")
+
     else:
-        for index, task in enumerate(data,start=1):
-          if task["status"] == True:
-            print(f"{index}. {task['task']} ✔")
-          else:
-              print(f"{index}. {task['task']} ❌")    
+
+        for index, task in enumerate(data, start=1):
+
+            if task["status"] == True:
+
+                print(f"{index}. {task['task']} ✔")
+
+            else:
+
+                print(f"{index}. {task['task']} ❌")
 
 
-def update_task(status,task):
+def update_task(status, task):
 
     for item in data:
 
@@ -75,38 +83,42 @@ def update_task(status,task):
 
             return
 
-    print("Task not found")   
-
-
+    print("Task not found")
 
 
 def viewcompleted_task():
+
     if not data:
+
         print("List is empty")
-    for index,task in enumerate(data,start=1):
-        if task['status'] == True:
-               print(f"{index}. {task['task']} ✔")
+
+        return
+
+    for index, task in enumerate(data, start=1):
+
+        if task["status"] == True:
+
+            print(f"{index}. {task['task']} ✔")
 
 
 def viewincompleted_task():
+
     if not data:
+
         print("List is empty")
-    for index,task in enumerate(data,start=1):
-        if task['status'] == False:
-               print(f"{index}. {task['task']} ❌ ")
 
+        return
 
+    for index, task in enumerate(data, start=1):
 
+        if task["status"] == False:
 
-
-    
-
-    
-    
+            print(f"{index}. {task['task']} ❌ ")
 
 
 while True:
-       print("""
+
+    print("""
        enter your choice:
        1:add
        2:remove
@@ -114,48 +126,55 @@ while True:
        4:update
        5:exit
        6:completed task   
-       7:incompleted task           
-                                         
-       """)  
+       7:incompleted task                                          
+       """)
 
-       choice = input("Enter your choice: ")
+    choice = input("Enter your choice: ")
 
-       if choice == "1":
-           task = input("Enter the task: ").lower()
-           add_task(task)
+    if choice == "1":
 
-       elif choice == "2":
-           task = input("Enter task to remove: ").lower()
-           remove_task(task)
-          
+        task = input("Enter the task: ").lower()
 
-       elif choice == "3":
-           if not data:
-               print("List not found")
-           else:
-                view_tasks()  
+        add_task(task)
 
+    elif choice == "2":
 
-       elif choice == "4":
+        task = input("Enter task to remove: ").lower()
 
-         updating_task = input("Enter your task: ")
-        
-         updating_status = input("Did you complete task? (yes/no): ")
+        remove_task(task)
 
-         update_task(updating_status,updating_task)
-           
-               
-       elif choice == "5":
-           print("exited from the program") 
-           break
-       elif choice == "6":
-           viewcompleted_task()
-       
-       elif choice == "7":
-           viewincompleted_task()
-       else:
-           print("Invalid choice")
-        
-                    
-            
-    
+    elif choice == "3":
+
+        if not data:
+
+            print("List not found")
+
+        else:
+
+            view_tasks()
+
+    elif choice == "4":
+
+        updating_task = input("Enter your task: ")
+
+        updating_status = input("Did you complete task? (yes/no): ")
+
+        update_task(updating_status, updating_task)
+
+    elif choice == "5":
+
+        print("exited from the program")
+
+        break
+
+    elif choice == "6":
+
+        viewcompleted_task()
+
+    elif choice == "7":
+
+        viewincompleted_task()
+
+    else:
+
+        print("Invalid choice")
