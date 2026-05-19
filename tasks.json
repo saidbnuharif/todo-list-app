@@ -1,7 +1,7 @@
 [
     {
         "task": "wake up early",
-        "status": false
+        "status": true
     },
     {
         "task": "drink water",

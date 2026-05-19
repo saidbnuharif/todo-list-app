@@ -30,7 +30,6 @@ def remove_task(task):
     print(task)
 
     for item in data:
-        print(item)
 
         if item["task"] == task:
 
@@ -50,7 +49,10 @@ def view_tasks():
         print("list is empty")
     else:
         for index, task in enumerate(data,start=1):
-          print(f"{index}:{task}")    
+          if task["status"] == True:
+            print(f"{index}. {task['task']} ✔")
+          else:
+              print(f"{index}. {task['task']} ❌")    
 
 
 def update_task(status,task):
@@ -73,7 +75,31 @@ def update_task(status,task):
 
             return
 
-    print("Task not found")    
+    print("Task not found")   
+
+
+
+
+def viewcompleted_task():
+    if not data:
+        print("List is empty")
+    for index,task in enumerate(data,start=1):
+        if task['status'] == True:
+               print(f"{index}. {task['task']} ✔")
+
+
+def viewincompleted_task():
+    if not data:
+        print("List is empty")
+    for index,task in enumerate(data,start=1):
+        if task['status'] == False:
+               print(f"{index}. {task['task']} ❌ ")
+
+
+
+
+
+    
 
     
     
@@ -86,7 +112,10 @@ while True:
        2:remove
        3:find all
        4:update
-       5:exit                              
+       5:exit
+       6:completed task   
+       7:incompleted task           
+                                         
        """)  
 
        choice = input("Enter your choice: ")
@@ -119,7 +148,11 @@ while True:
        elif choice == "5":
            print("exited from the program") 
            break
+       elif choice == "6":
+           viewcompleted_task()
        
+       elif choice == "7":
+           viewincompleted_task()
        else:
            print("Invalid choice")
         
