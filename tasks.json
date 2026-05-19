@@ -1,14 +1,26 @@
 [
-    "Learn python",
-    "Go gym",
-    "Drink enough water",
-    "Do exercise",
-    "Build future",
-    "New beggining",
-    "New task",
-    "new task",
     {
-        "task": "new one",
+        "task": "wake up early",
+        "status": false
+    },
+    {
+        "task": "drink water",
+        "status": false
+    },
+    {
+        "task": "do workouts",
+        "status": false
+    },
+    {
+        "task": "eat healthy breakfast",
+        "status": false
+    },
+    {
+        "task": "go for work",
+        "status": false
+    },
+    {
+        "task": "make prpgress",
         "status": false
     }
 ]

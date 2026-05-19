@@ -15,9 +15,8 @@ def add_task(task):
 
     data.append({
 
-        "task": task,
+        "task": task.lower(),
         "status": False
-
     })
 
     save_data()
@@ -28,13 +27,23 @@ def add_task(task):
 
 
 def remove_task(task):
+    print(task)
 
-        data.remove(task)
+    for item in data:
+        print(item)
 
-        save_data()
+        if item["task"] == task:
 
-        print("Task removed successfully")
+            data.remove(item)
 
+            save_data()
+
+            print("Task removed successfully")
+
+            return
+
+    print("Task not found")
+    
 
 def view_tasks():
     if not data:
@@ -45,10 +54,26 @@ def view_tasks():
 
 
 def update_task(status,task):
-   if  status == "yes": 
-    data[task][status] = True
-   else:
-       print("Please complete the task")  
+
+    for item in data:
+
+        if item["task"] == task:
+
+            if status.lower() == "yes":
+
+                item["status"] = True
+
+            elif status.lower() == "no":
+
+                item["status"] = False
+
+            save_data()
+
+            print("Task status updated")
+
+            return
+
+    print("Task not found")    
 
     
     
@@ -67,15 +92,13 @@ while True:
        choice = input("Enter your choice: ")
 
        if choice == "1":
-           task = input("Enter the task: ")
+           task = input("Enter the task: ").lower()
            add_task(task)
 
        elif choice == "2":
-           task = input("Enter task to remove: ")
-           if task not in data:
-               print("Task not found in list")
-           else:
-               remove_task(task)
+           task = input("Enter task to remove: ").lower()
+           remove_task(task)
+          
 
        elif choice == "3":
            if not data:
@@ -85,12 +108,12 @@ while True:
 
 
        elif choice == "4":
-          task = input("Enter your task")
-          if task in data:
-           status = "Does your task completed type yes / No"
-           update_task(status,task)
-          else:
-              print("No task found") 
+
+         updating_task = input("Enter your task: ")
+        
+         updating_status = input("Did you complete task? (yes/no): ")
+
+         update_task(updating_status,updating_task)
            
                
        elif choice == "5":
@@ -99,8 +122,7 @@ while True:
        
        else:
            print("Invalid choice")
-       
-                  
-                      
+        
+                    
             
     
