@@ -5,7 +5,7 @@
     },
     {
         "task": "drink water",
-        "status": false
+        "status": true
     },
     {
         "task": "do workouts",
@@ -20,7 +20,7 @@
         "status": false
     },
     {
-        "task": "make prpgress",
-        "status": false
+        "task": "make progress and success ",
+        "status": true
     }
 ]

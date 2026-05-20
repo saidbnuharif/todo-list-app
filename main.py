@@ -27,8 +27,6 @@ def add_task(task):
 
 def remove_task(task):
 
-    print(task)
-
     for item in data:
 
         if item["task"] == task:
@@ -52,15 +50,15 @@ def view_tasks():
 
     else:
 
-        for index, task in enumerate(data, start=1):
+        for index, item in enumerate(data, start=1):
 
-            if task["status"] == True:
+            if item["status"] == True:
 
-                print(f"{index}. {task['task']} ✔")
+                print(f"{index}. {item['task']} ✔")
 
             else:
 
-                print(f"{index}. {task['task']} ❌")
+                print(f"{index}. {item['task']} ❌")
 
 
 def update_task(status, task):
@@ -116,6 +114,25 @@ def viewincompleted_task():
             print(f"{index}. {task['task']} ❌ ")
 
 
+def update_taskname(old_task):
+
+    for item in data:
+
+        if item["task"] == old_task:
+
+            new_task = input("Enter modified task: ").lower()
+
+            item["task"] = new_task
+
+            save_data()
+
+            print("Task modified successfully")
+
+            return
+
+    print("No such task found in list")
+
+
 while True:
 
     print("""
@@ -124,9 +141,10 @@ while True:
        2:remove
        3:find all
        4:update
-       5:exit
-       6:completed task   
-       7:incompleted task                                          
+       5:completed task
+       6: incompleted task  
+       7: update task name
+       8:exit                                            
        """)
 
     choice = input("Enter your choice: ")
@@ -163,17 +181,23 @@ while True:
 
     elif choice == "5":
 
-        print("exited from the program")
-
-        break
+        viewcompleted_task()
 
     elif choice == "6":
 
-        viewcompleted_task()
+        viewincompleted_task()
 
     elif choice == "7":
 
-        viewincompleted_task()
+        old_task = input("Enter old task: ").lower()
+
+        update_taskname(old_task)
+
+    elif choice == "8":
+
+        print("exited from the program")
+
+        break
 
     else:
 
